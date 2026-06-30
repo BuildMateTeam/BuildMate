@@ -1,34 +1,51 @@
 // =====================================
-// BuildMate v1.1
+// BuildMate v1.3
 // ui.js
 // =====================================
 
-function setStatus(text) {
-    document.getElementById("status").textContent = text;
+function setStatus(text){
+
+    document.getElementById("status").textContent=text;
+
 }
 
-function formatBytes(bytes) {
-    if (bytes < 1024) return bytes + " B";
-    if (bytes < 1024 * 1024)
-        return (bytes / 1024).toFixed(2) + " KB";
+function formatBytes(bytes){
 
-    return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+    if(bytes<1024)return bytes+" B";
+
+    if(bytes<1024*1024)
+        return (bytes/1024).toFixed(2)+" KB";
+
+    return (bytes/1024/1024).toFixed(2)+" MB";
+
 }
 
-function showStructureDetails(file) {
+function showStructureDetails(file){
 
-    document.getElementById("fileName").innerHTML = `
+    localStorage.setItem("lastFile",file.name);
+
+    document.getElementById("fileName").innerHTML=`
+
 <b>📄 ${file.name}</b><br>
+
 📦 ${formatBytes(file.size)}<br>
+
 📑 ${file.name.split(".").pop()}<br>
+
 🟢 Ready
+
 `;
 
 }
 
-function resetStructure() {
+function resetStructure(){
 
-    document.getElementById("fileName").innerHTML =
-`No structure loaded<br>--`;
+    const last=localStorage.getItem("lastFile");
+
+    document.getElementById("fileName").innerHTML=last?
+
+`Last Opened:<br><b>${last}</b>`:
+
+`No structure loaded`;
 
 }
