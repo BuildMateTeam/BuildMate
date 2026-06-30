@@ -1,42 +1,38 @@
 // =====================================
-// BuildMate v1.0 Rebuild
+// BuildMate v1.1
 // app.js
 // =====================================
 
-window.addEventListener("load", function () {
+window.onload = () => {
 
-    const loading = document.getElementById("loading");
-    const app = document.getElementById("app");
+    setTimeout(() => {
 
-    setTimeout(function () {
+        document.getElementById("loading").style.display = "none";
 
-        loading.style.display = "none";
-        app.classList.remove("hidden");
+        document.getElementById("app").classList.remove("hidden");
 
-    }, 2000);
+    },2000);
 
     initializeFileModule();
 
-    document.getElementById("aboutBtn").onclick = function () {
+    document.getElementById("aboutBtn").onclick = () => {
 
-        alert(
-`🧱 BuildMate
+        alert(`🧱 BuildMate
 
-Version: v1.0 Rebuild
+Version: v1.1
 
 Developer:
 GiaHuy + ChatGPT
 
 Status:
-🚧 Under Development`
-        );
+🚧 Under Development`);
 
     };
 
-    document.getElementById("settingsBtn").onclick = function () {
+    document.getElementById("settingsBtn").onclick = () => {
 
-        alert("⚙️ Settings sẽ có trong BuildMate v1.1");
+        alert("⚙️ Settings Coming Soon");
 
     };
 
-});
+};
