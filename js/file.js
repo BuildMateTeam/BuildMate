@@ -1,49 +1,42 @@
 // =====================================
-// BuildMate v1.0 Rebuild
+// BuildMate v1.1
 // file.js
 // =====================================
 
-function initializeFileModule(){
+function initializeFileModule() {
 
-    const openBtn=document.getElementById("openBtn");
+    const openBtn = document.getElementById("openBtn");
+    const input = document.getElementById("fileInput");
 
-    const fileInput=document.getElementById("fileInput");
+    openBtn.onclick = () => {
 
-    openBtn.onclick=function(){
-
-        fileInput.value="";
-
-        fileInput.click();
+        input.value = "";
+        input.click();
 
     };
 
-    fileInput.onchange=function(){
+    input.onchange = () => {
 
-        const file=fileInput.files[0];
+        const file = input.files[0];
 
-        if(!file){
+        if (!file) {
 
-            setStatus("🟡 No file selected");
-
-            resetFileInfo();
+            resetStructure();
+            setStatus("🟡 No File");
 
             return;
 
         }
 
-        setStatus("🟡 Reading...");
+        setStatus("🟡 Loading...");
 
-        updateFileInfo(file);
+        setTimeout(() => {
 
-        const structure=parseStructure(file);
+            showStructureDetails(file);
 
-        console.table(structure);
+            setStatus("🟢 Structure Loaded");
 
-        setTimeout(function(){
-
-            setStatus("🟢 Ready");
-
-        },500);
+        },400);
 
     };
 
