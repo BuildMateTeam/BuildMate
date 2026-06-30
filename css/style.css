@@ -205,3 +205,9 @@ footer{
     color:#8b949e;
 
 }
+
+body.dragging{
+
+    outline:3px dashed #2ea043;
+
+}
